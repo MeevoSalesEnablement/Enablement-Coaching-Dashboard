@@ -4,208 +4,226 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Meevo Sales Enablement Dashboard</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:#f5f7fa;color:#3d4f5f}
-.header{background:#fff;border-bottom:1px solid #e2e8f0;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#dde2e8;color:#2d3a45;min-height:100vh}
+.header{background:#fff;border-bottom:1px solid #c5ced6;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .logo-area{display:flex;align-items:center;gap:14px}
-.logo-area svg{flex-shrink:0}
-.header-title{font-size:17px;font-weight:600;color:#1a6b54}.header-sub{font-size:12px;color:#7a8fa0;margin-top:1px}
-.header-right{font-size:11px;color:#94a3b8}
-.tabs{background:#fff;border-bottom:1px solid #e2e8f0;display:flex;overflow-x:auto;position:sticky;top:0;z-index:10}
-.tab{padding:13px 22px;font-size:13px;font-weight:500;color:#7a8fa0;background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;white-space:nowrap;font-family:inherit;transition:all .15s}
+.header-title{font-size:17px;font-weight:600;color:#1a6b54}.header-sub{font-size:12px;color:#6b7a88;margin-top:1px}
+.header-right{font-size:11px;color:#8494a2}
+.global-search{padding:9px 16px;border-radius:10px;border:1px solid #c5ced6;font-size:13px;width:280px;font-family:inherit;background:#eef2f6;color:#2d3a45;outline:none;transition:border .2s}
+.global-search:focus{border-color:#1a6b54;box-shadow:0 0 0 2px rgba(26,107,84,.15)}
+.global-search::placeholder{color:#8494a2}
+.tabs{background:#fff;border-bottom:1px solid #c5ced6;display:flex;overflow-x:auto;position:sticky;top:0;z-index:10}
+.tab{padding:13px 22px;font-size:13px;font-weight:500;color:#6b7a88;background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;white-space:nowrap;font-family:inherit;transition:all .15s}
 .tab:hover{color:#1a6b54}.tab.active{font-weight:600;color:#1a6b54;border-bottom-color:#1a6b54}
-.main{padding:24px;max-width:1020px;margin:0 auto}
+.main{padding:24px;max-width:1060px;margin:0 auto}
 .cards{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
-.card{background:#fff;border-radius:14px;padding:18px 20px;border:1px solid #e8edf2;flex:1;min-width:150;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.card-label{font-size:11px;color:#7a8fa0;font-weight:600;text-transform:uppercase;letter-spacing:.6px}
+.card{background:#fff;border-radius:14px;padding:18px 20px;border:1px solid #c5ced6;flex:1;min-width:145;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.card-label{font-size:10px;color:#6b7a88;font-weight:600;text-transform:uppercase;letter-spacing:.7px}
 .card-value{font-size:28px;font-weight:700;margin-top:4px}
-.card-sub{font-size:11px;color:#94a3b8;margin-top:3px}
-.section-title{font-size:16px;font-weight:600;color:#2d3e4e;margin-bottom:6px}
-.section-sub{font-size:12px;color:#7a8fa0;margin-bottom:16px}
-.monthly-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
-.mo-card{flex:1;min-width:120;background:#fff;border-radius:12px;padding:14px 16px;border:1px solid #e8edf2;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.mo-label{font-size:11px;color:#94a3b8;font-weight:500}.mo-val{font-size:24px;font-weight:700;margin-top:3px}
-.search-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
-.search-input{padding:8px 14px;border-radius:10px;border:1px solid #dde3ea;font-size:12px;width:220px;font-family:inherit;background:#fff;color:#3d4f5f;outline:none;transition:border .2s}
-.search-input:focus{border-color:#1a6b54}
-.tbl-wrap{overflow-x:auto;background:#fff;border-radius:14px;border:1px solid #e8edf2;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.card-sub{font-size:11px;color:#8494a2;margin-top:3px}
+.stitle{font-size:16px;font-weight:600;color:#1e2b35;margin-bottom:6px}
+.ssub{font-size:12px;color:#6b7a88;margin-bottom:16px}
+.mo-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.mo-card{flex:1;min-width:120;background:#fff;border-radius:12px;padding:14px 16px;border:1px solid #c5ced6;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.mo-label{font-size:11px;color:#6b7a88;font-weight:500}.mo-val{font-size:24px;font-weight:700;margin-top:3px}
+.tbl-wrap{overflow-x:auto;background:#fff;border-radius:14px;border:1px solid #c5ced6;box-shadow:0 1px 3px rgba(0,0,0,.05)}
 table{width:100%;border-collapse:collapse;font-size:12px}
-thead tr{background:#f8fafb;border-bottom:2px solid #e8edf2}
-th{text-align:left;padding:11px 12px;color:#7a8fa0;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.4px;cursor:pointer;user-select:none}
-td{padding:11px 12px;border-bottom:1px solid #f0f3f6}
-tbody tr{transition:background .1s;cursor:pointer}tbody tr:hover{background:#f5faf8}
+thead tr{background:#edf1f5;border-bottom:2px solid #c5ced6}
+th{text-align:left;padding:11px 12px;color:#6b7a88;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer;user-select:none}
+td{padding:11px 12px;border-bottom:1px solid #edf1f5}
+tbody tr{transition:background .1s;cursor:pointer}tbody tr:hover{background:#f4f7fa}
 .av{border-radius:50%;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0}
 .name-cell{display:flex;align-items:center;gap:10px}
-.badge{padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700}
-.rep-card{background:#fff;border-radius:14px;padding:20px;margin-bottom:14px;border:1px solid #e8edf2;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.badge{padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700;color:#fff}
+.rep-card{background:#fff;border-radius:14px;padding:20px;margin-bottom:14px;border:1px solid #c5ced6;box-shadow:0 1px 3px rgba(0,0,0,.05)}
 .rep-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
-.rep-name{font-weight:600;font-size:15px;color:#2d3e4e}.rep-sub{font-size:12px;color:#94a3b8}
+.rep-name{font-weight:600;font-size:15px;color:#1e2b35}.rep-sub{font-size:12px;color:#6b7a88}
 .rep-score{font-size:26px;font-weight:700}
 .rep-stats{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
 .rep-stat{flex:1;min-width:90;border-radius:10px;padding:10px 12px;text-align:center}
-.rep-stat-val{font-size:20px;font-weight:700}.rep-stat-label{font-size:10px;color:#7a8fa0;margin-top:2px}
+.rep-stat-val{font-size:20px;font-weight:700}.rep-stat-label{font-size:10px;color:#6b7a88;margin-top:2px}
 .tag-section{margin-bottom:12px}
-.tag-title{font-size:11px;font-weight:600;color:#7a8fa0;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.tag-title{font-size:10px;font-weight:600;color:#6b7a88;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
 .tags{display:flex;gap:6px;flex-wrap:wrap}
-.tag{padding:4px 12px;border-radius:14px;font-size:11px;font-weight:500}
-.tag-theme{background:#e8f5f0;color:#1a6b54}.tag-action{background:#fef8e8;color:#8a6d1b}
+.tag{padding:4px 12px;border-radius:14px;font-size:11px;font-weight:600;color:#fff}
+.tag-theme{background:#1a6b54}.tag-action{background:#8a6d1b}
+.tag-red{background:#b83b3b}
 .filter-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
 .filter-btn{padding:6px 14px;border-radius:18px;font-size:11px;border:none;cursor:pointer;font-family:inherit;transition:all .15s;font-weight:500}
 .filter-btn.active{background:#1a6b54;color:#fff;font-weight:600}
-.filter-btn:not(.active){background:#edf1f5;color:#5a6b7a}
-.filter-btn:not(.active):hover{background:#dde8e4;color:#1a6b54}
-.comp-card{background:#fff;border-radius:12px;padding:14px 18px;margin-bottom:10px;border:1px solid #e8edf2;cursor:pointer;transition:box-shadow .15s;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.comp-card:hover{box-shadow:0 3px 12px rgba(0,0,0,.08)}
+.filter-btn:not(.active){background:#e4e9ee;color:#4a5968}
+.filter-btn:not(.active):hover{background:#c8ddd4;color:#1a6b54}
+.comp-card{background:#fff;border-radius:12px;padding:14px 18px;margin-bottom:10px;border:1px solid #c5ced6;cursor:pointer;transition:box-shadow .15s;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.comp-card:hover{box-shadow:0 3px 12px rgba(0,0,0,.1)}
 .comp-row{display:flex;align-items:center;gap:14px}
-.comp-name{font-size:13px;font-weight:600;color:#2d3e4e}
-.bar-bg{background:#edf1f5;border-radius:6px;height:6px;width:100%;overflow:hidden;margin-top:6px}
+.comp-name{font-size:13px;font-weight:600;color:#1e2b35}
+.bar-bg{background:#e4e9ee;border-radius:6px;height:6px;width:100%;overflow:hidden;margin-top:6px}
 .bar-fill{height:100%;border-radius:6px;transition:width .4s}
 .comp-score{font-size:22px;font-weight:700;min-width:50px;text-align:right}
-.comp-detail{margin-top:10px;padding:12px 14px;border-radius:10px;font-size:12px;display:none;line-height:1.5}
+.comp-detail{margin-top:10px;padding:12px 14px;border-radius:10px;font-size:12px;display:none;line-height:1.6}
 .comp-detail.open{display:block}
 .gap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:14px}
-.gap-card{background:#fff;border-radius:12px;padding:14px 16px;border:1px solid #e8edf2}
+.gap-card{background:#fff;border-radius:12px;padding:14px 16px;border:1px solid #c5ced6}
 .gap-card-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.gap-item{font-size:11px;color:#5a6b7a;padding:2px 0}.gap-item.limited{color:#b8c5d0}
-.trend-row{background:#fff;border-radius:12px;padding:14px 18px;margin-bottom:10px;border:1px solid #e8edf2;display:flex;align-items:center;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.trend-row.warn{border-color:#f5c6c6}
+.gap-item{font-size:11px;color:#4a5968;padding:2px 0}.gap-item.limited{color:#b0bcc6}
+.trend-row{background:#fff;border-radius:12px;padding:14px 18px;margin-bottom:10px;border:1px solid #c5ced6;display:flex;align-items:center;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.trend-row.warn{border-color:#e8a0a0}
 .trend-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:12px}
-.trend-mini{background:#fff;border-radius:10px;padding:10px 14px;border:1px solid #e8edf2;display:flex;align-items:center;gap:10px}
-.cov-banner{background:linear-gradient(135deg,#e8f5f0,#d1f0e4);border-radius:14px;padding:28px;margin-bottom:28px;border:1px solid #a7e0c8;text-align:center}
-.cov-pct{font-size:44px;font-weight:800;color:#1a6b54}.cov-title{font-size:17px;font-weight:600;color:#14533e}
-.ht-box{background:#fff;border-radius:14px;padding:20px;margin-top:22px;border:1px solid #e8edf2;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.ht-box h3{font-size:14px;font-weight:600;color:#2d3e4e;margin-bottom:14px}
-.ht-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #f0f3f6}
-.ht-row:last-child{border-bottom:none}
+.trend-mini{background:#fff;border-radius:10px;padding:10px 14px;border:1px solid #c5ced6;display:flex;align-items:center;gap:10px}
+.tier-card{background:#fff;border-radius:14px;padding:18px 20px;margin-bottom:12px;border:1px solid #c5ced6;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.tier-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.tier-badge{padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;color:#fff}
+.tier-rep{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #edf1f5}
+.tier-rep:last-child{border-bottom:none}
+.tier-detail{font-size:11px;color:#5a6b7a;margin-top:3px;line-height:1.5}
+.search-result{background:#fff;border-radius:14px;padding:24px;border:1px solid #c5ced6;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.search-result h2{font-size:18px;font-weight:700;color:#1a6b54;margin-bottom:4px}
+.search-result .sub{font-size:12px;color:#6b7a88;margin-bottom:20px}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:20px}
+.stat-box{background:#edf1f5;border-radius:10px;padding:14px;text-align:center}
+.stat-box-val{font-size:22px;font-weight:700}.stat-box-label{font-size:10px;color:#6b7a88;margin-top:3px;text-transform:uppercase;letter-spacing:.4px}
+.footer{text-align:center;padding:28px 20px;color:#8494a2;font-size:11px}
+.spark{flex-shrink:0}
 .bar-chart{display:flex;align-items:flex-end;gap:6px;height:64px;margin-top:16px}
 .bar-col{flex:1;text-align:center}.bar-fill-v{border-radius:5px 5px 0 0;transition:height .3s;min-height:8px}
-.bar-val{font-size:11px;font-weight:600;margin-top:4px}.bar-lbl{font-size:9px;color:#94a3b8;margin-top:1px}
-.footer{text-align:center;padding:28px 20px;color:#94a3b8;font-size:11px}
-.spark{flex-shrink:0}
-::-webkit-scrollbar{height:6px;width:6px}::-webkit-scrollbar-track{background:#f1f1f1;border-radius:3px}::-webkit-scrollbar-thumb{background:#c8d0d8;border-radius:3px}
+.bar-val{font-size:11px;font-weight:600;margin-top:4px}.bar-lbl{font-size:9px;color:#8494a2;margin-top:1px}
+::-webkit-scrollbar{height:6px;width:6px}::-webkit-scrollbar-track{background:#e4e9ee;border-radius:3px}::-webkit-scrollbar-thumb{background:#b0bcc6;border-radius:3px}
 </style>
 </head>
 <body>
 <div class="header">
   <div class="logo-area">
-    <svg width="120" height="36" viewBox="0 0 120 36" xmlns="http://www.w3.org/2000/svg">
-      <rect width="120" height="36" rx="6" fill="#1a6b54"/>
-      <text x="60" y="23" text-anchor="middle" font-family="Inter,system-ui,sans-serif" font-size="16" font-weight="700" fill="#ffffff" letter-spacing="2">MEEVO</text>
-    </svg>
-    <div>
-      <div class="header-title">Sales Onboarding — Enablement Dashboard</div>
-      <div class="header-sub">Q1 2026 · 22 Reps · 4 Coaching Frameworks</div>
-    </div>
+    <svg width="110" height="34" viewBox="0 0 110 34" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="34" rx="6" fill="#1a6b54"/><text x="55" y="22" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif" font-size="15" font-weight="700" fill="#ffffff" letter-spacing="2">MEEVO</text></svg>
+    <div><div class="header-title">Sales Onboarding — Enablement Dashboard</div><div class="header-sub">Q1 2026 · 22 Reps · 8 Coaching Frameworks</div></div>
   </div>
-  <div class="header-right">Last updated: Apr 1, 2026</div>
+  <input class="global-search" id="globalSearch" placeholder="Search any rep by name..." autocomplete="off"/>
 </div>
-
+<div id="searchResults" style="display:none;padding:24px;max-width:1060px;margin:0 auto"></div>
 <div class="tabs" id="tabs"></div>
 <div class="main" id="main"></div>
-<div class="footer">Meevo Sales Enablement Dashboard · Built for team coaching visibility · Q1 2026</div>
-
+<div class="footer">Meevo Sales Enablement Dashboard · Q1 2026</div>
 <script>
 var REPS=[
-{id:1,name:"Sandra Arnette",total:872,excellent:51,good:212,needsWork:299,avg:2.49,gaps:["Discovery - Implications (1.10)","Discovery - Why Top Priority (1.17)","Intro Call - Why Top Priority (1.00)"],trend:[2.50,2.66,2.39,2.50],trendLabel:"Recovering",opps:167,calls:354,themes:["Gatekeeper navigation (562 calls)","Discovery gaps (30)","Demo execution (76)"],actions:["Discovery fundamentals","Gatekeeper info gleaning"]},
-{id:2,name:"Africa Brown",total:829,excellent:89,good:175,needsWork:269,avg:2.50,gaps:["Intro Call - Implications","Intro Call - Why Top Priority","GK Navigation"],trend:[2.44,2.74,2.59,2.68],trendLabel:"Recovering",opps:135,calls:202,themes:["Cold calling consistency","Intro call effectiveness"],actions:["Reduce variability","Improve intro call framework"]},
-{id:3,name:"Kaelyne Chavez",total:685,excellent:76,good:139,needsWork:181,avg:2.68,gaps:["GK Intel Gathering","Intro Call Structure","Consistency"],trend:[null,2.65,2.70,2.68],trendLabel:"Stable",opps:109,calls:136,themes:["Gatekeeper navigation","Intro calls"],actions:["GK intel gathering","Intro call structure"]},
-{id:4,name:"Amber Martello",total:607,excellent:99,good:138,needsWork:111,avg:2.51,gaps:["GK - Info Gleaning","GK - Connecting","Cross-call Consistency"],trend:[null,2.48,2.53,2.51],trendLabel:"Improving",opps:150,calls:193,themes:["Cold call execution","Consistency"],actions:["Consistency improvement"]},
-{id:5,name:"Chloe Arnette",total:535,excellent:47,good:119,needsWork:154,avg:2.66,gaps:["GK Navigation","Intro Call Framework","GK Connection"],trend:[2.38,2.92,2.99,2.94],trendLabel:"Strong ↑",opps:117,calls:137,themes:["Gatekeeper navigation","Intro calls"],actions:["Intro call framework","GK connection"]},
-{id:6,name:"Myranda Grabman",total:470,excellent:99,good:138,needsWork:111,avg:2.89,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.88,2.89,2.89],trendLabel:"Rock Solid",opps:96,calls:149,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:7,name:"Matt McCarthy",total:414,excellent:93,good:99,needsWork:111,avg:2.84,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.80,2.86,2.84],trendLabel:"Stable",opps:117,calls:165,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:8,name:"Jenna Flory",total:385,excellent:58,good:90,needsWork:123,avg:2.58,gaps:["Cold Call Execution","Discovery Depth","Consistency"],trend:[null,2.55,2.60,2.58],trendLabel:"Stable",opps:121,calls:162,themes:["Cold call execution","Discovery depth"],actions:["Discovery coaching","Consistency"]},
-{id:9,name:"Tyler Butt",total:382,excellent:23,good:101,needsWork:158,avg:2.58,gaps:["Call Quality","Volume vs Quality","GK Navigation"],trend:[null,2.54,2.60,2.58],trendLabel:"Stable",opps:112,calls:135,themes:["Call quality","Volume vs quality balance"],actions:["Quality focus","GK navigation"]},
-{id:10,name:"William Appleford",total:378,excellent:33,good:93,needsWork:120,avg:2.63,gaps:["GK Navigation","Cold Call Consistency","Discovery"],trend:[2.46,2.58,2.58,null],trendLabel:"Improving",opps:73,calls:83,themes:["GK navigation improvement"],actions:["Continue GK coaching"]},
-{id:11,name:"Michael Senich",total:303,excellent:0,good:0,needsWork:0,avg:2.70,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.68,2.71,2.70],trendLabel:"Stable",opps:117,calls:183,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:12,name:"Monica Lopez",total:292,excellent:0,good:0,needsWork:0,avg:2.57,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.55,2.58,2.57],trendLabel:"Stable",opps:83,calls:115,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:13,name:"Candice Chuy",total:288,excellent:45,good:28,needsWork:39,avg:2.71,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.68,2.73,2.71],trendLabel:"Stable",opps:103,calls:158,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:14,name:"Brandon Cline",total:231,excellent:38,good:28,needsWork:47,avg:2.73,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.75,2.89,null],trendLabel:"Improving",opps:54,calls:69,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:15,name:"Denise LaRocca",total:182,excellent:0,good:0,needsWork:0,avg:2.79,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,2.79,2.79],trendLabel:"New",opps:136,calls:161,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:16,name:"Tony Sansone",total:161,excellent:0,good:0,needsWork:0,avg:2.78,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,2.78,2.78],trendLabel:"New",opps:124,calls:151,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:17,name:"Sky Guasco",total:116,excellent:18,good:37,needsWork:29,avg:2.80,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,2.78,2.80],trendLabel:"New",opps:40,calls:47,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:18,name:"Spencer Hicks",total:108,excellent:7,good:35,needsWork:44,avg:2.65,gaps:["Call Quality","Consistency","GK Navigation"],trend:[null,null,2.62,2.65],trendLabel:"New",opps:24,calls:29,themes:["Call quality","Consistency"],actions:["Quality coaching","GK navigation"]},
-{id:19,name:"Lauren Hopkins",total:94,excellent:18,good:20,needsWork:21,avg:2.97,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,2.85,2.97],trendLabel:"Strong ↑",opps:62,calls:69,themes:["Strong performer"],actions:["Peer coaching candidate"]},
-{id:20,name:"Ryan Burns",total:45,excellent:12,good:15,needsWork:5,avg:2.77,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,null,2.77],trendLabel:"New",opps:24,calls:30,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:21,name:"Jeremy Sexton",total:34,excellent:0,good:0,needsWork:0,avg:2.59,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,null,2.59],trendLabel:"New",opps:11,calls:12,themes:["General coaching"],actions:["Continue current coaching"]},
-{id:22,name:"Patrick McCaghren",total:7,excellent:0,good:0,needsWork:0,avg:2.37,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,null,2.37],trendLabel:"New",opps:3,calls:5,themes:["Limited calls"],actions:["Increase call volume"]}
+{id:1,n:"Sandra Arnette",total:872,exc:51,good:212,nw:299,avg:2.49,gaps:["Discovery - Implications (1.10)","Discovery - Why Top Priority (1.17)","Intro Call - Why Top Priority (1.00)"],trend:[2.50,2.66,2.39,2.50],tl:"Recovering",opps:167,calls:354,themes:["GK navigation (562)","Discovery gaps (30)","Demo execution (76)"],actions:["Discovery fundamentals","GK info gleaning"],obj:{tier:"T2",score:3.29,type:"Cold Call + AE Demo (3.09)",detail:"Strong cold call objection handling"},price:{score:2.25,mastery:"11/76 (14%)",struggle:"30/76 (39%)",tier:"mid"},vol:{total:1172,mo:[370,252,514,36],eff:"Volume hurting quality"}},
+{id:2,n:"Africa Brown",total:829,exc:89,good:175,nw:269,avg:2.50,gaps:["Intro Call - Implications","Intro Call - Why Top Priority","GK Navigation"],trend:[2.44,2.74,2.59,2.68],tl:"Recovering",opps:135,calls:202,themes:["Cold calling consistency","Intro call effectiveness"],actions:["Reduce variability","Improve intro call framework"],obj:{tier:"T3",score:2.77,type:"Cold Call",detail:"32% mastery, 11% struggling. Objection coaching needed."},price:{score:null,tier:null},vol:{total:946,mo:[290,296,318,42],eff:"Consistent volume, quality issue"}},
+{id:3,n:"Kaelyne Chavez",total:685,exc:76,good:139,nw:181,avg:2.68,gaps:["GK Intel Gathering","Intro Call Structure","Consistency"],trend:[null,2.65,2.70,2.68],tl:"Stable",opps:109,calls:136,themes:["GK navigation","Intro calls"],actions:["GK intel gathering","Intro call structure"],obj:{tier:"T2",score:3.06,type:"Cold Call",detail:"Developing objection handler"},price:{score:null,tier:null},vol:{total:774,mo:[307,185,255,27],eff:"Steady activity"}},
+{id:4,n:"Amber Martello",total:607,exc:99,good:138,nw:111,avg:2.51,gaps:["GK - Info Gleaning","GK - Connecting","Consistency"],trend:[null,2.48,2.53,2.51],tl:"Improving",opps:150,calls:193,themes:["Cold call execution"],actions:["Consistency improvement"],obj:{tier:"T2",score:3.45,type:"Cold Call",detail:"Strong cold call objection handler"},price:{score:null,tier:null},vol:{total:698,mo:[258,164,247,29],eff:"2.51 avg score"}},
+{id:5,n:"Chloe Arnette",total:535,exc:47,good:119,nw:154,avg:2.66,gaps:["GK Navigation","Intro Call Framework","GK Connection"],trend:[2.38,2.92,2.99,2.94],tl:"Strong ↑",opps:117,calls:137,themes:["GK navigation","Intro calls"],actions:["Intro call framework","GK connection"],obj:{tier:"T2",score:3.21,type:"Cold Call",detail:"Developing objection handler"},price:{score:null,tier:null},vol:{total:798,mo:[208,282,282,26],eff:"Better quality than top volume reps"}},
+{id:6,n:"Myranda Grabman",total:470,exc:99,good:138,nw:111,avg:2.89,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.88,2.89,2.89],tl:"Rock Solid",opps:96,calls:149,themes:["General coaching"],actions:["Continue current coaching"],obj:{tier:"T1",score:3.60,type:"Cold Call",detail:"75% mastery (58/77 at 4+), 3% struggling"},price:{score:2.57,tier:"mid"},vol:{total:726,mo:[0,350,359,17],eff:"HIGH QUALITY + HIGH VOLUME"}},
+{id:7,n:"Matt McCarthy",total:414,exc:93,good:99,nw:111,avg:2.84,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.80,2.86,2.84],tl:"Stable",opps:117,calls:165,themes:["General coaching"],actions:["Continue current coaching"],obj:{tier:"T1",score:3.71,type:"Cold Call - Owner/Manager",detail:"82% mastery (51/62 at 4+), 5% struggling"},price:{score:2.42,tier:"mid"},vol:{total:548,mo:[145,215,182,6],eff:"Good balance quality/volume"}},
+{id:8,n:"Jenna Flory",total:385,exc:58,good:90,nw:123,avg:2.58,gaps:["Cold Call Execution","Discovery Depth","Consistency"],trend:[null,2.55,2.60,2.58],tl:"Stable",opps:121,calls:162,themes:["Cold call execution","Discovery depth"],actions:["Discovery coaching"],obj:{tier:"T1",score:3.65,type:"AE Demo (3.65) + Cold Call (3.55)",detail:"Versatile: 72% AE Demo, 61% Cold Call mastery"},price:{score:2.91,mastery:"20/57 (35%)",struggle:"9/57 (16%)",tier:"top"},vol:{total:505,mo:[142,144,207,12],eff:"2.58 avg score"}},
+{id:9,n:"Tyler Butt",total:382,exc:23,good:101,nw:158,avg:2.58,gaps:["Call Quality","Volume vs Quality","GK Navigation"],trend:[null,2.54,2.60,2.58],tl:"Stable",opps:112,calls:135,themes:["Call quality","Volume balance"],actions:["Quality focus","GK navigation"],obj:{tier:"T2",score:3.00,type:"Cold Call",detail:"At threshold — needs improvement"},price:{score:null,tier:null},vol:{total:889,mo:[1,426,416,46],eff:"Ramped Feb, sustained high volume"}},
+{id:10,n:"William Appleford",total:378,exc:33,good:93,nw:120,avg:2.63,gaps:["GK Navigation","Cold Call Consistency","Discovery"],trend:[2.46,2.58,2.58,null],tl:"Improving",opps:73,calls:83,themes:["GK navigation"],actions:["Continue GK coaching"],obj:{tier:"T2",score:3.06,type:"Cold Call",detail:"Developing objection handler"},price:{score:null,tier:null},vol:{total:440,mo:[null,null,null,null],eff:"Mid-tier activity"}},
+{id:11,n:"Michael Senich",total:303,exc:0,good:0,nw:0,avg:2.70,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.68,2.71,2.70],tl:"Stable",opps:117,calls:183,themes:["General coaching"],actions:["Continue coaching"],obj:{tier:"T2",score:3.07,type:"Cold Call",detail:"Solid objection handler"},price:{score:null,tier:null},vol:{total:388,mo:[null,null,null,null],eff:"Started Mar"}},
+{id:12,n:"Monica Lopez",total:292,exc:0,good:0,nw:0,avg:2.57,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.55,2.58,2.57],tl:"Stable",opps:83,calls:115,themes:["General coaching"],actions:["Continue coaching"],obj:{tier:"T1",score:3.63,type:"AE Demo",detail:"65% mastery (32/49 at 4+), 0% struggling"},price:{score:2.80,mastery:"10/51 (20%)",struggle:"8/51 (16%)",tier:"top"},vol:{total:391,mo:[null,null,null,null],eff:"Mid-tier activity"}},
+{id:13,n:"Candice Chuy",total:288,exc:45,good:28,nw:39,avg:2.71,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.68,2.73,2.71],tl:"Stable",opps:103,calls:158,themes:["General coaching"],actions:["Continue coaching"],obj:{tier:"T1",score:3.71,type:"Cold Call (3.71) + AE Demo (3.64)",detail:"Strong across types: 69% CC, 73% AE mastery"},price:{score:2.76,mastery:"41/108 (38%)",struggle:"28/108 (26%)",tier:"top"},vol:{total:348,mo:[null,null,null,null],eff:"Mid-tier activity"}},
+{id:14,n:"Brandon Cline",total:231,exc:38,good:28,nw:47,avg:2.73,gaps:["Limited data","Limited data","Limited data"],trend:[null,2.75,2.89,null],tl:"Improving",opps:54,calls:69,themes:["General coaching"],actions:["Continue coaching"],obj:{tier:"T2",score:3.43,type:"AE Demo (3.43) + Cold Call (3.24)",detail:"Strong across call types"},price:{score:2.52,tier:"mid"},vol:{total:416,mo:[null,null,null,null],eff:"Mid-tier activity"}},
+{id:15,n:"Denise LaRocca",total:182,exc:0,good:0,nw:0,avg:2.79,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,2.79,2.79],tl:"New",opps:136,calls:161,themes:["General coaching"],actions:["Continue coaching"],obj:{tier:"T1",score:3.74,type:"SE Demo - Technical Objections",detail:"87% mastery (128/147 at 4+), 6% struggling"},price:{score:null,tier:null},vol:{total:199,mo:[null,null,null,null],eff:""}},
+{id:16,n:"Tony Sansone",total:161,exc:0,good:0,nw:0,avg:2.78,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,2.78,2.78],tl:"New",opps:124,calls:151,themes:["General coaching"],actions:["Continue coaching"],obj:{tier:"T1",score:3.69,type:"SE Demo - Technical Objections",detail:"80% mastery (109/137 at 4+), 4% struggling"},price:{score:null,tier:null},vol:{total:181,mo:[null,null,null,null],eff:""}},
+{id:17,n:"Sky Guasco",total:116,exc:18,good:37,nw:29,avg:2.80,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,2.78,2.80],tl:"New",opps:40,calls:47,themes:["General coaching"],actions:["Continue coaching"],obj:{tier:"T2",score:3.37,type:"Cold Call",detail:"Developing handler"},price:{score:null,tier:null},vol:{total:323,mo:[null,null,null,null],eff:"Started Mar"}},
+{id:18,n:"Spencer Hicks",total:108,exc:7,good:35,nw:44,avg:2.65,gaps:["Call Quality","Consistency","GK Navigation"],trend:[null,null,2.62,2.65],tl:"New",opps:24,calls:29,themes:["Call quality"],actions:["Quality coaching"],obj:{tier:"T2",score:3.45,type:"Cold Call",detail:"Strong cold call handler"},price:{score:null,tier:null},vol:{total:172,mo:[1,143,28,0],eff:"MAJOR DROP Mar→Apr. URGENT."}},
+{id:19,n:"Lauren Hopkins",total:94,exc:18,good:20,nw:21,avg:2.97,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,2.85,2.97],tl:"Strong ↑",opps:62,calls:69,themes:["Strong performer"],actions:["Peer coaching candidate"],obj:{tier:"T2",score:3.43,type:"Cold Call",detail:"Strong cold call handler"},price:{score:1.80,mastery:"0/5 (0%)",struggle:"3/5 (60%)",tier:"critical"},vol:{total:119,mo:[null,null,105,14],eff:"New rep, good start"}},
+{id:20,n:"Ryan Burns",total:45,exc:12,good:15,nw:5,avg:2.77,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,null,2.77],tl:"New",opps:24,calls:30,themes:["General coaching"],actions:["Continue coaching"],obj:{tier:"T1",score:3.87,type:"SE Demo - Technical Objections",detail:"87% mastery (26/30 at 4+), 0% struggling. BEST on team."},price:{score:null,tier:null},vol:{total:57,mo:[19,34,4,0],eff:"CRITICAL: 4 calls last 30 days"}},
+{id:21,n:"Jeremy Sexton",total:34,exc:0,good:0,nw:0,avg:2.59,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,null,2.59],tl:"New",opps:11,calls:12,themes:["General coaching"],actions:["Continue coaching"],obj:{tier:"T3",score:2.75,type:"Cold Call (limited: 12 evals)",detail:"Development needed"},price:{score:null,tier:null},vol:{total:48,mo:[null,null,null,null],eff:"Started Mar"}},
+{id:22,n:"Patrick McCaghren",total:7,exc:0,good:0,nw:0,avg:2.37,gaps:["Limited data","Limited data","Limited data"],trend:[null,null,null,2.37],tl:"New",opps:3,calls:5,themes:["Limited calls"],actions:["Increase call volume"],obj:{tier:"T2",score:3.00,type:"AE Demo (limited: 2 evals)",detail:"Limited data"},price:{score:1.00,mastery:"0/2 (0%)",struggle:"2/2 (100%)",tier:"critical"},vol:{total:441,mo:[29,155,242,15],eff:"Strong ramp but quality needs work"}}
 ];
-var COMPS=[
-{name:"Discovery - Implications",avg:1.10,type:"gap",detail:"Sandra Arnette: 27/30 evals below 2.0. Prospects don't feel urgency to change."},
-{name:"Discovery - Why Top Priority",avg:1.17,type:"gap",detail:"Sandra Arnette: 25/30 evals below 2.0. Misaligned demos and proposals."},
-{name:"Intro Call - Implications",avg:1.33,type:"gap",detail:"Multiple reps struggling across limited evaluations."},
-{name:"AE Demo - Open-ended Questions",avg:1.63,type:"gap",detail:"Sandra Arnette: 28/76 evals below 2.0. Talking AT prospects instead of WITH them."},
-{name:"AE Demo - Clarifying Questions",avg:1.67,type:"gap",detail:"Sandra Arnette: 25/76 evals below 2.0. Not confirming understanding."},
-{name:"AE Demo - Features vs Value",avg:1.81,type:"gap",detail:"Sandra Arnette: 18/68 evals below 2.0. Leading with features instead of outcomes."},
-{name:"Cold Call - GK Info Gleaning",avg:1.99,type:"gap",detail:"Sandra Arnette: 247/562 evals below 2.0. Not extracting intel before asking for DM."},
-{name:"Intro Call - Next Steps",avg:4.67,type:"strength",detail:"Sandra Arnette: 3/3 evals at 4+. Peer coaching opportunity on closing intro calls."},
-{name:"AE Demo - Next Steps",avg:3.68,type:"strength",detail:"Multiple reps strong. Securing post-demo commitments."},
-{name:"CC - Owner Intro/Hook",avg:3.30,type:"strength",detail:"Lauren Hopkins, Matt McCarthy, Brandon Cline lead. Opening statement training."},
-{name:"CC - Owner Objection Nav",avg:3.29,type:"strength",detail:"Chloe Arnette, William Appleford lead. Objection handling workshops."},
-{name:"Professional Rapport",avg:3.26,type:"strength",detail:"Chloe Arnette: 201/312 evals at 4+. Relationship building training."}
-];
+var COMPS=[{name:"Discovery - Implications",avg:1.10,type:"gap",detail:"Sandra: 27/30 evals below 2.0. Prospects don't feel urgency."},{name:"Discovery - Why Top Priority",avg:1.17,type:"gap",detail:"Sandra: 25/30 evals below 2.0. Misaligned demos."},{name:"Intro Call - Implications",avg:1.33,type:"gap",detail:"Multiple reps struggling."},{name:"AE Demo - Open-ended Qs",avg:1.63,type:"gap",detail:"Sandra: 28/76 below 2.0. Talking AT not WITH."},{name:"AE Demo - Clarifying Qs",avg:1.67,type:"gap",detail:"Sandra: 25/76 below 2.0."},{name:"AE Demo - Features vs Value",avg:1.81,type:"gap",detail:"Sandra: 18/68 below 2.0. Features over outcomes."},{name:"Cold Call - GK Info Gleaning",avg:1.99,type:"gap",detail:"Sandra: 247/562 below 2.0."},{name:"Intro Call - Next Steps",avg:4.67,type:"strength",detail:"Sandra: 3/3 at 4+. Peer coaching opportunity."},{name:"AE Demo - Next Steps",avg:3.68,type:"strength",detail:"Multiple reps strong."},{name:"CC - Owner Intro/Hook",avg:3.30,type:"strength",detail:"Lauren, Matt, Brandon lead."},{name:"CC - Owner Objection Nav",avg:3.29,type:"strength",detail:"Chloe, William lead."},{name:"Professional Rapport",avg:3.26,type:"strength",detail:"Chloe: 201/312 at 4+."}];
 var MONTHLY=[{month:"January",avg:2.54,strong:38,weak:27},{month:"February",avg:2.68,strong:44,weak:20},{month:"March",avg:2.59,strong:35,weak:24},{month:"April",avg:2.63,strong:41,weak:18}];
 var MO=["Jan","Feb","Mar","Apr"];
-function sc(v){return v>=3?"#1a6b54":v>=2.7?"#3b82c4":v>=2.5?"#c4880d":"#c45a3b"}
-function scBg(v){return v>=3?"rgba(26,107,84,.1)":v>=2.7?"rgba(59,130,196,.1)":v>=2.5?"rgba(196,136,13,.1)":"rgba(196,90,59,.1)"}
+function sc(v){return v>=3?"#0f7b5f":v>=2.7?"#2563a8":v>=2.5?"#a07d0a":"#b83b3b"}
+function scBg(v){return v>=3?"#1a6b54":v>=2.7?"#1e3a6f":v>=2.5?"#6b5a0a":"#6b1d1d"}
 function pct(n,t){return t?Math.round(n/t*100):0}
 function hue(n){return n.split("").reduce(function(a,c){return a+c.charCodeAt(0)},0)%360}
-function initials(n){return n.split(" ").map(function(w){return w[0]}).join("")}
-function av(name,sz){return'<div class="av" style="width:'+sz+'px;height:'+sz+'px;font-size:'+(sz*.36)+'px;background:hsl('+hue(name)+',40%,45%)">'+initials(name)+'</div>'}
-function spark(data,w,h){w=w||100;h=h||28;var v=data.map(function(val,i){return val!==null?{v:val,i:i}:null}).filter(Boolean);if(v.length<2)return'<span style="font-size:11px;color:#b8c5d0">—</span>';var mn=Math.min.apply(null,v.map(function(d){return d.v}))-0.1,mx=Math.max.apply(null,v.map(function(d){return d.v}))+0.1;var pts=v.map(function(d){return((d.i/3)*(w-4)+2)+","+(h-2-((d.v-mn)/(mx-mn))*(h-4))}).join(" ");var last=v[v.length-1].v,first=v[0].v,col=last>first?"#1a6b54":last<first?"#c45a3b":"#7a8fa0";var dots=v.map(function(d,i){var x=(d.i/3)*(w-4)+2,y=h-2-((d.v-mn)/(mx-mn))*(h-4);return'<circle cx="'+x+'" cy="'+y+'" r="'+(i===v.length-1?3:1.5)+'" fill="'+col+'"/>'}).join("");return'<svg class="spark" width="'+w+'" height="'+h+'"><polyline points="'+pts+'" fill="none" stroke="'+col+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'+dots+'</svg>'}
+function ini(n){return n.split(" ").map(function(w){return w[0]}).join("")}
+function av(name,sz){return'<div class="av" style="width:'+sz+'px;height:'+sz+'px;font-size:'+(sz*.36)+'px;background:hsl('+hue(name)+',35%,42%)">'+ini(name)+'</div>'}
+function spark(data,w,h){w=w||100;h=h||28;var v=data.map(function(val,i){return val!==null?{v:val,i:i}:null}).filter(Boolean);if(v.length<2)return'<span style="font-size:11px;color:#b0bcc6">—</span>';var mn=Math.min.apply(null,v.map(function(d){return d.v}))-0.1,mx=Math.max.apply(null,v.map(function(d){return d.v}))+0.1;var pts=v.map(function(d){return((d.i/3)*(w-4)+2)+","+(h-2-((d.v-mn)/(mx-mn))*(h-4))}).join(" ");var last=v[v.length-1].v,first=v[0].v,col=last>first?"#0f7b5f":last<first?"#b83b3b":"#6b7a88";var dots=v.map(function(d,i){var x=(d.i/3)*(w-4)+2,y=h-2-((d.v-mn)/(mx-mn))*(h-4);return'<circle cx="'+x+'" cy="'+y+'" r="'+(i===v.length-1?3:1.5)+'" fill="'+col+'"/>'}).join("");return'<svg class="spark" width="'+w+'" height="'+h+'"><polyline points="'+pts+'" fill="none" stroke="'+col+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'+dots+'</svg>'}
 var currentTab="Overview",sortKey="total",sortDir="desc",searchVal="",selRep=null;
-var TABNAMES=["Overview","Call Coaching","Skills & Gaps","Trends","Deal Coverage"];
-function sortedReps(){var f=REPS.filter(function(r){return r.name.toLowerCase().indexOf(searchVal.toLowerCase())>=0});f.sort(function(a,b){return sortDir==="desc"?(b[sortKey]||0)-(a[sortKey]||0):(a[sortKey]||0)-(b[sortKey]||0)});return f}
-function renderTabs(){var h="";TABNAMES.forEach(function(t){h+='<button class="tab'+(currentTab===t?" active":"")+'" data-tab="'+t+'">'+t+'</button>'});document.getElementById("tabs").innerHTML=h;document.querySelectorAll(".tab").forEach(function(b){b.onclick=function(){currentTab=this.dataset.tab;selRep=null;render()}})}
-function renderOverview(){var tc=REPS.reduce(function(s,r){return s+r.total},0),ta=(REPS.reduce(function(s,r){return s+r.avg*r.total},0)/tc).toFixed(2),to=REPS.reduce(function(s,r){return s+r.opps},0),reps=sortedReps(),si=sortKey,arrow=sortDir==="desc"?"▼":"▲";
-var h='<div class="cards"><div class="card"><div class="card-label">Total Calls Reviewed</div><div class="card-value" style="color:#1a6b54">'+tc.toLocaleString()+'</div><div class="card-sub">YTD across all reps</div></div><div class="card"><div class="card-label">Team Avg Score</div><div class="card-value" style="color:'+sc(parseFloat(ta))+'">'+ta+'</div><div class="card-sub">Out of 5.0</div></div><div class="card"><div class="card-label">Opps Coached</div><div class="card-value" style="color:#1a6b54">'+to.toLocaleString()+'</div><div class="card-sub">100% coverage</div></div><div class="card"><div class="card-label">Competencies</div><div class="card-value" style="color:#c4880d">453</div><div class="card-sub">12 key areas tracked</div></div></div>';
-h+='<div class="monthly-row">';MONTHLY.forEach(function(m){h+='<div class="mo-card"><div class="mo-label">'+m.month+'</div><div class="mo-val" style="color:'+sc(m.avg)+'">'+m.avg+'</div><div style="display:flex;gap:10px;margin-top:6px"><span style="font-size:10px;color:#1a6b54">▲ '+m.strong+'% strong</span><span style="font-size:10px;color:#c45a3b">▼ '+m.weak+'% weak</span></div></div>'});h+='</div>';
-h+='<div class="search-row"><div class="section-title">Team Roster ('+reps.length+')</div><input class="search-input" placeholder="Search reps..." value="'+searchVal+'" id="repSearch"/></div>';
-h+='<div class="tbl-wrap"><table><thead><tr><th>Rep</th><th style="text-align:right" data-sort="total">Reviewed'+(si==="total"?" "+arrow:"")+'</th><th style="text-align:right" data-sort="avg">Avg'+(si==="avg"?" "+arrow:"")+'</th><th style="text-align:center">Excellent</th><th style="text-align:center">Needs Work</th><th style="text-align:center">Trend</th><th style="text-align:right" data-sort="opps">Opps'+(si==="opps"?" "+arrow:"")+'</th></tr></thead><tbody>';
-reps.forEach(function(r){h+='<tr data-rep="'+r.id+'"><td><div class="name-cell">'+av(r.name,30)+'<div style="font-weight:600;font-size:13px;color:#2d3e4e">'+r.name+'</div></div></td><td style="text-align:right;font-weight:600">'+r.total+'</td><td style="text-align:right"><span class="badge" style="color:'+sc(r.avg)+';background:'+scBg(r.avg)+'">'+r.avg+'</span></td><td style="text-align:center;color:#1a6b54;font-weight:500">'+(r.excellent>0?r.excellent+" ("+pct(r.excellent,r.total)+"%)":"—")+'</td><td style="text-align:center;color:#c45a3b;font-weight:500">'+(r.needsWork>0?r.needsWork+" ("+pct(r.needsWork,r.total)+"%)":"—")+'</td><td style="text-align:center">'+spark(r.trend)+'</td><td style="text-align:right;font-weight:500">'+r.opps+'</td></tr>'});
-h+='</tbody></table></div>';return h}
-function renderCoaching(){var h='<div class="filter-row"><button class="filter-btn'+(selRep===null?" active":"")+'" data-rep="all">All Reps</button>';REPS.forEach(function(r){h+='<button class="filter-btn'+(selRep===r.id?" active":"")+'" data-rep="'+r.id+'">'+r.name.split(" ")[0]+'</button>'});h+='</div>';
-var list=selRep?REPS.filter(function(r){return r.id===selRep}):REPS;
-list.forEach(function(r){h+='<div class="rep-card"><div class="rep-header">'+av(r.name,36)+'<div style="flex:1"><div class="rep-name">'+r.name+'</div><div class="rep-sub">'+r.total+' calls · Avg: '+r.avg+' · '+r.trendLabel+'</div></div><div class="rep-score" style="color:'+sc(r.avg)+'">'+r.avg+'</div></div>';
-h+='<div class="rep-stats">';[{l:"Excellent",v:r.excellent,c:"#1a6b54"},{l:"Good",v:r.good,c:"#3b82c4"},{l:"Needs Work",v:r.needsWork,c:"#c45a3b"}].forEach(function(b){h+='<div class="rep-stat" style="background:'+(b.v>0?b.c+"11":"#f8fafb")+'"><div class="rep-stat-val" style="color:'+(b.v>0?b.c:"#cdd5de")+'">'+(b.v>0?b.v:"—")+'</div><div class="rep-stat-label">'+b.l+(b.v>0?" ("+pct(b.v,r.total)+"%)":"")+'</div></div>'});h+='</div>';
-h+='<div class="tag-section"><div class="tag-title">Key Themes</div><div class="tags">';r.themes.forEach(function(t){h+='<span class="tag tag-theme">'+t+'</span>'});h+='</div></div>';
-h+='<div class="tag-section"><div class="tag-title">Coaching Actions</div><div class="tags">';r.actions.forEach(function(a){h+='<span class="tag tag-action">'+a+'</span>'});h+='</div></div>';
-if(selRep){h+='<div style="margin-top:16px"><div class="tag-title">Score Trend (Jan–Apr)</div><div class="bar-chart">';r.trend.forEach(function(v,i){h+='<div class="bar-col">';if(v!==null){h+='<div class="bar-fill-v" style="height:'+Math.max((v-2)*120,8)+'px;background:'+sc(v)+'"></div><div class="bar-val" style="color:'+sc(v)+'">'+v+'</div>'}else{h+='<div style="font-size:10px;color:#cdd5de;padding-bottom:18px">—</div>'}h+='<div class="bar-lbl">'+MO[i]+'</div></div>'});h+='</div></div>'}
-h+='</div>'});return h}
-function renderSkills(){var h='<div class="section-title" style="color:#c45a3b">Critical Gaps (Avg < 2.0)</div><div class="section-sub">Urgent coaching needed — these competencies are holding the team back</div>';
-COMPS.filter(function(c){return c.type==="gap"}).forEach(function(c,i){h+='<div class="comp-card" data-comp="'+i+'"><div class="comp-row"><div style="flex:1"><div class="comp-name">'+c.name+'</div><div class="bar-bg"><div class="bar-fill" style="width:'+((c.avg/5)*100)+'%;background:'+sc(c.avg)+'"></div></div></div><div class="comp-score" style="color:'+sc(c.avg)+'">'+c.avg+'</div></div><div class="comp-detail" id="comp-gap-'+i+'" style="background:#fdf2f0;color:#7a3322">'+c.detail+'</div></div>'});
-h+='<div class="section-title" style="color:#1a6b54;margin-top:32px">Team Strengths (Avg > 3.0)</div><div class="section-sub">Leverage these for peer coaching and best practice sharing</div>';
-COMPS.filter(function(c){return c.type==="strength"}).forEach(function(c,i){h+='<div class="comp-card" data-comp-s="'+i+'"><div class="comp-row"><div style="flex:1"><div class="comp-name">'+c.name+'</div><div class="bar-bg"><div class="bar-fill" style="width:'+((c.avg/5)*100)+'%;background:'+sc(c.avg)+'"></div></div></div><div class="comp-score" style="color:'+sc(c.avg)+'">'+c.avg+'</div></div><div class="comp-detail" id="comp-str-'+i+'" style="background:#e8f5f0;color:#14533e">'+c.detail+'</div></div>'});
-h+='<div class="section-title" style="margin-top:32px">Individual Top 3 Gaps</div><div class="gap-grid">';
-REPS.forEach(function(r){h+='<div class="gap-card"><div class="gap-card-header">'+av(r.name,24)+'<span style="font-weight:600;font-size:13px;color:#2d3e4e">'+r.name+'</span></div>';r.gaps.forEach(function(g,i){h+='<div class="gap-item'+(g.includes("Limited")?" limited":"")+'">'+(i+1)+'. '+g+'</div>'});h+='</div>'});h+='</div>';return h}
-function renderTrends(){var h='<div class="section-title">Monthly Team Performance</div><div class="section-sub" style="margin-bottom:18px">February was the team\'s best month. March saw regression. April is recovering.</div><div class="monthly-row">';
-MONTHLY.forEach(function(m){h+='<div class="mo-card" style="text-align:center;padding:18px"><div class="mo-label">'+m.month+'</div><div style="font-size:32px;font-weight:700;color:'+sc(m.avg)+';margin-top:4px">'+m.avg+'</div><div style="display:flex;justify-content:center;gap:16px;margin-top:10px"><div><span style="font-size:16px;font-weight:700;color:#1a6b54">'+m.strong+'%</span><div style="font-size:9px;color:#94a3b8">Strong ≥3.0</div></div><div><span style="font-size:16px;font-weight:700;color:#c45a3b">'+m.weak+'%</span><div style="font-size:9px;color:#94a3b8">Weak <2.0</div></div></div></div>'});h+='</div>';
-h+='<div class="section-title" style="color:#1a6b54;margin-top:8px">Improving Reps</div><div class="section-sub">Coaching is working — positive trajectory</div>';
-REPS.filter(function(r){return r.trendLabel==="Strong ↑"||r.trendLabel==="Improving"}).forEach(function(r){h+='<div class="trend-row">'+av(r.name,32)+'<div style="flex:1"><div style="font-weight:600;font-size:13px;color:#2d3e4e">'+r.name+'</div><div style="font-size:11px;color:#1a6b54">'+r.trendLabel+'</div></div>'+spark(r.trend,120,32)+'<div style="font-size:16px;font-weight:700;color:'+sc(r.avg)+'">'+r.avg+'</div></div>'});
-h+='<div class="section-title" style="color:#c45a3b;margin-top:28px">Watch List</div><div class="section-sub">Showing regression or inconsistency — monitor closely</div>';
-REPS.filter(function(r){return r.trendLabel==="Recovering"}).forEach(function(r){h+='<div class="trend-row warn">'+av(r.name,32)+'<div style="flex:1"><div style="font-weight:600;font-size:13px;color:#2d3e4e">'+r.name+'</div><div style="font-size:11px;color:#c45a3b">'+r.trendLabel+' — needs attention</div></div>'+spark(r.trend,120,32)+'<div style="font-size:16px;font-weight:700;color:'+sc(r.avg)+'">'+r.avg+'</div></div>'});
-h+='<div class="section-title" style="color:#7a8fa0;margin-top:28px">Stable Performers</div><div class="section-sub">Consistent — maintain current coaching cadence</div>';
-REPS.filter(function(r){return r.trendLabel==="Rock Solid"||r.trendLabel==="Stable"}).forEach(function(r){h+='<div class="trend-row" style="padding:12px 18px">'+av(r.name,28)+'<div style="flex:1"><div style="font-weight:500;font-size:13px;color:#3d4f5f">'+r.name+'</div></div>'+spark(r.trend,80,24)+'<div style="font-size:14px;font-weight:700;color:'+sc(r.avg)+'">'+r.avg+'</div></div>'});
-h+='<div class="section-title" style="margin-top:28px">All Reps — Trend Sparklines</div><div class="trend-grid">';
-REPS.forEach(function(r){h+='<div class="trend-mini">'+av(r.name,24)+'<div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:500;color:#3d4f5f;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+r.name+'</div><div style="font-size:10px;color:#94a3b8">'+r.trendLabel+'</div></div>'+spark(r.trend,60,20)+'<span style="font-size:12px;font-weight:700;color:'+sc(r.avg)+'">'+r.avg+'</span></div>'});h+='</div>';return h}
-function renderDeals(){var sorted=[].concat(REPS).sort(function(a,b){return b.opps-a.opps});
-var h='<div class="cov-banner"><div class="cov-pct">100%</div><div class="cov-title">Coaching Coverage Achieved</div><div style="font-size:12px;color:#5a7a6a;margin-top:6px">Every rep has 0 uncoached opportunities — all deals with calls reviewed and scored</div></div>';
-h+='<div class="section-title">Deal Coaching Leaderboard</div><div class="section-sub" style="margin-bottom:14px">Ranked by unique opportunities coached</div>';
-h+='<div class="tbl-wrap"><table><thead><tr><th style="width:30px">#</th><th>Rep</th><th style="text-align:right">Opps</th><th style="text-align:right">Calls</th><th style="text-align:right">Calls/Opp</th><th style="text-align:center">Coverage</th></tr></thead><tbody>';
-sorted.forEach(function(r,i){h+='<tr><td style="color:#94a3b8;font-weight:500">'+(i+1)+'</td><td><div class="name-cell">'+av(r.name,26)+'<span style="font-weight:600;font-size:13px;color:#2d3e4e">'+r.name+'</span></div></td><td style="text-align:right;font-weight:600">'+r.opps+'</td><td style="text-align:right">'+r.calls+'</td><td style="text-align:right;font-weight:500">'+(r.calls/r.opps).toFixed(1)+'</td><td style="text-align:center"><span style="background:#e8f5f0;color:#1a6b54;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:600">100%</span></td></tr>'});
-h+='</tbody></table></div>';
-var ht=[].concat(REPS).sort(function(a,b){return(b.calls/b.opps)-(a.calls/a.opps)}).slice(0,5);
-h+='<div class="ht-box"><h3>High-Touch Reps (Most calls per opportunity)</h3>';
-ht.forEach(function(r){var ratio=(r.calls/r.opps).toFixed(1);h+='<div class="ht-row">'+av(r.name,28)+'<div style="flex:1;font-size:13px;font-weight:500;color:#3d4f5f">'+r.name+'</div><div style="width:80px"><div class="bar-bg"><div class="bar-fill" style="width:'+((r.calls/r.opps)/2.5*100)+'%;background:#1a6b54"></div></div></div><div style="font-size:16px;font-weight:700;color:#1a6b54;min-width:40px;text-align:right">'+ratio+'</div><div style="font-size:10px;color:#94a3b8">calls/opp</div></div>'});
+var TABNAMES=["Overview","Call Coaching","Skills & Gaps","Trends","Objections","Pricing","Activity"];
+function sortedReps(){var f=REPS.filter(function(r){return r.n.toLowerCase().indexOf(searchVal.toLowerCase())>=0});f.sort(function(a,b){return sortDir==="desc"?(b[sortKey]||0)-(a[sortKey]||0):(a[sortKey]||0)-(b[sortKey]||0)});return f}
+function renderTabs(){var h="";TABNAMES.forEach(function(t){h+='<button class="tab'+(currentTab===t?" active":"")+'" data-tab="'+t+'">'+t+'</button>'});document.getElementById("tabs").innerHTML=h;document.querySelectorAll(".tab").forEach(function(b){b.onclick=function(){currentTab=this.dataset.tab;selRep=null;document.getElementById("searchResults").style.display="none";document.getElementById("tabs").style.display="flex";document.getElementById("main").style.display="block";render()}})}
+function renderRepProfile(r){
+var h='<div class="search-result"><div style="display:flex;align-items:center;gap:14px;margin-bottom:20px">'+av(r.n,48)+'<div><h2>'+r.n+'</h2><div class="sub">'+r.total+' calls reviewed · '+r.opps+' opportunities · Trend: '+r.tl+'</div></div><div style="margin-left:auto;font-size:32px;font-weight:800;color:'+sc(r.avg)+'">'+r.avg+'</div></div>';
+h+='<div class="stat-grid">';
+h+='<div class="stat-box"><div class="stat-box-val" style="color:#1e2b35">'+r.total+'</div><div class="stat-box-label">Calls Reviewed</div></div>';
+h+='<div class="stat-box"><div class="stat-box-val" style="color:'+sc(r.avg)+'">'+r.avg+'</div><div class="stat-box-label">Avg Score</div></div>';
+h+='<div class="stat-box"><div class="stat-box-val" style="color:#2563a8">'+r.opps+'</div><div class="stat-box-label">Opportunities</div></div>';
+h+='<div class="stat-box"><div class="stat-box-val" style="color:'+(r.obj.score>=3.5?"#0f7b5f":r.obj.score>=3?"#a07d0a":"#b83b3b")+'">'+r.obj.score+'</div><div class="stat-box-label">Objection Score</div></div>';
+if(r.price.score!==null){h+='<div class="stat-box"><div class="stat-box-val" style="color:'+sc(r.price.score)+'">'+r.price.score+'</div><div class="stat-box-label">Pricing Score</div></div>'}
+if(r.vol.total){h+='<div class="stat-box"><div class="stat-box-val" style="color:#2563a8">'+r.vol.total.toLocaleString()+'</div><div class="stat-box-label">Calls YTD</div></div>'}
+h+='</div>';
+h+='<div style="margin-bottom:16px"><div class="tag-title">Call Breakdown</div><div class="rep-stats">';
+[{l:"Excellent",v:r.exc,c:"#1a6b54"},{l:"Good",v:r.good,c:"#2563a8"},{l:"Needs Work",v:r.nw,c:"#b83b3b"}].forEach(function(b){h+='<div class="rep-stat" style="background:'+(b.v>0?b.c:"#edf1f5")+'"><div class="rep-stat-val" style="color:'+(b.v>0?"#fff":"#b0bcc6")+'">'+(b.v>0?b.v:"—")+'</div><div class="rep-stat-label" style="color:'+(b.v>0?"rgba(255,255,255,.8)":"#8494a2")+'">'+b.l+(b.v>0?" ("+pct(b.v,r.total)+"%)":"")+'</div></div>'});
+h+='</div></div>';
+h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px"><div><div class="tag-title">Key Themes</div><div class="tags">';r.themes.forEach(function(t){h+='<span class="tag tag-theme">'+t+'</span>'});h+='</div></div><div><div class="tag-title">Coaching Actions</div><div class="tags">';r.actions.forEach(function(a){h+='<span class="tag tag-action">'+a+'</span>'});h+='</div></div></div>';
+h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><div><div class="tag-title">Objection Handling</div><div style="background:#edf1f5;border-radius:10px;padding:12px"><div style="font-size:13px;font-weight:600;color:#1e2b35">'+r.obj.type+'</div><div style="font-size:11px;color:#5a6b7a;margin-top:4px">'+r.obj.detail+'</div></div></div>';
+h+='<div><div class="tag-title">Top 3 Skill Gaps</div><div style="background:#edf1f5;border-radius:10px;padding:12px">';r.gaps.forEach(function(g,i){h+='<div style="font-size:12px;color:'+(g.includes("Limited")?"#b0bcc6":"#2d3a45")+';padding:2px 0">'+(i+1)+'. '+g+'</div>'});h+='</div></div></div>';
+if(r.vol.mo&&r.vol.mo[0]!==null){h+='<div style="margin-top:16px"><div class="tag-title">Monthly Call Volume</div><div class="bar-chart">';r.vol.mo.forEach(function(v,i){if(v!==null){var mx=Math.max.apply(null,r.vol.mo.filter(function(x){return x!==null}));h+='<div class="bar-col"><div class="bar-fill-v" style="height:'+Math.max(v/mx*50,6)+'px;background:#2563a8"></div><div class="bar-val" style="color:#2563a8">'+v+'</div><div class="bar-lbl">'+MO[i]+'</div></div>'}else{h+='<div class="bar-col"><div style="color:#b0bcc6;font-size:10px">—</div><div class="bar-lbl">'+MO[i]+'</div></div>'}});h+='</div>';if(r.vol.eff){h+='<div style="font-size:11px;color:#5a6b7a;margin-top:8px">Insight: '+r.vol.eff+'</div>'}h+='</div>'}
 h+='</div>';return h}
-function render(){renderTabs();var m=document.getElementById("main");if(currentTab==="Overview")m.innerHTML=renderOverview();else if(currentTab==="Call Coaching")m.innerHTML=renderCoaching();else if(currentTab==="Skills & Gaps")m.innerHTML=renderSkills();else if(currentTab==="Trends")m.innerHTML=renderTrends();else if(currentTab==="Deal Coverage")m.innerHTML=renderDeals();bindEvents()}
-function bindEvents(){var si=document.getElementById("repSearch");if(si){si.oninput=function(){searchVal=this.value;render();setTimeout(function(){var el=document.getElementById("repSearch");if(el){el.focus();el.setSelectionRange(el.value.length,el.value.length)}},0)}}
-document.querySelectorAll("th[data-sort]").forEach(function(th){th.onclick=function(){var k=this.dataset.sort;if(sortKey===k)sortDir=sortDir==="desc"?"asc":"desc";else{sortKey=k;sortDir="desc"}render()}});
+function renderOverview(){var tc=REPS.reduce(function(s,r){return s+r.total},0),ta=(REPS.reduce(function(s,r){return s+r.avg*r.total},0)/tc).toFixed(2),to=REPS.reduce(function(s,r){return s+r.opps},0),reps=sortedReps(),si=sortKey,arrow=sortDir==="desc"?"▼":"▲";
+var h='<div class="cards"><div class="card"><div class="card-label">Calls Reviewed</div><div class="card-value" style="color:#1e2b35">'+tc.toLocaleString()+'</div><div class="card-sub">YTD all reps</div></div><div class="card"><div class="card-label">Team Avg</div><div class="card-value" style="color:'+sc(parseFloat(ta))+'">'+ta+'</div><div class="card-sub">Out of 5.0</div></div><div class="card"><div class="card-label">Opps Coached</div><div class="card-value" style="color:#1e2b35">'+to.toLocaleString()+'</div><div class="card-sub">100% coverage</div></div><div class="card"><div class="card-label">Competencies</div><div class="card-value" style="color:#1e2b35">453</div><div class="card-sub">12 key areas</div></div></div>';
+h+='<div class="mo-row">';MONTHLY.forEach(function(m){h+='<div class="mo-card"><div class="mo-label">'+m.month+'</div><div class="mo-val" style="color:'+sc(m.avg)+'">'+m.avg+'</div><div style="display:flex;gap:10px;margin-top:6px"><span style="font-size:10px;color:#0f7b5f">▲ '+m.strong+'%</span><span style="font-size:10px;color:#b83b3b">▼ '+m.weak+'%</span></div></div>'});h+='</div>';
+h+='<div class="stitle">Team Roster</div>';
+h+='<div class="tbl-wrap"><table><thead><tr><th>Rep</th><th style="text-align:right" data-sort="total">Reviewed'+(si==="total"?" "+arrow:"")+'</th><th style="text-align:right" data-sort="avg">Avg'+(si==="avg"?" "+arrow:"")+'</th><th style="text-align:center">Excellent</th><th style="text-align:center">Needs Work</th><th style="text-align:center">Trend</th><th style="text-align:right" data-sort="opps">Opps'+(si==="opps"?" "+arrow:"")+'</th></tr></thead><tbody>';
+reps.forEach(function(r){h+='<tr data-rep="'+r.id+'"><td><div class="name-cell">'+av(r.n,30)+'<div style="font-weight:600;font-size:13px;color:#1e2b35">'+r.n+'</div></div></td><td style="text-align:right;font-weight:600;color:#2d3a45">'+r.total+'</td><td style="text-align:right"><span class="badge" style="background:'+scBg(r.avg)+'">'+r.avg+'</span></td><td style="text-align:center;color:#0f7b5f;font-weight:500">'+(r.exc>0?r.exc+" ("+pct(r.exc,r.total)+"%)":"—")+'</td><td style="text-align:center;color:#b83b3b;font-weight:500">'+(r.nw>0?r.nw+" ("+pct(r.nw,r.total)+"%)":"—")+'</td><td style="text-align:center">'+spark(r.trend)+'</td><td style="text-align:right;font-weight:500;color:#2d3a45">'+r.opps+'</td></tr>'});
+h+='</tbody></table></div>';return h}
+function renderCoaching(){var h='<div class="filter-row"><button class="filter-btn'+(selRep===null?" active":"")+'" data-rep="all">All</button>';REPS.forEach(function(r){h+='<button class="filter-btn'+(selRep===r.id?" active":"")+'" data-rep="'+r.id+'">'+r.n.split(" ")[0]+'</button>'});h+='</div>';
+(selRep?REPS.filter(function(r){return r.id===selRep}):REPS).forEach(function(r){h+='<div class="rep-card"><div class="rep-header">'+av(r.n,36)+'<div style="flex:1"><div class="rep-name">'+r.n+'</div><div class="rep-sub">'+r.total+' calls · Avg: '+r.avg+' · '+r.tl+'</div></div><div class="rep-score" style="color:'+sc(r.avg)+'">'+r.avg+'</div></div><div class="rep-stats">';
+[{l:"Excellent",v:r.exc,c:"#1a6b54"},{l:"Good",v:r.good,c:"#2563a8"},{l:"Needs Work",v:r.nw,c:"#b83b3b"}].forEach(function(b){h+='<div class="rep-stat" style="background:'+(b.v>0?b.c:"#edf1f5")+'"><div class="rep-stat-val" style="color:'+(b.v>0?"#fff":"#b0bcc6")+'">'+(b.v>0?b.v:"—")+'</div><div class="rep-stat-label" style="color:'+(b.v>0?"rgba(255,255,255,.8)":"#8494a2")+'">'+b.l+(b.v>0?" ("+pct(b.v,r.total)+"%)":"")+'</div></div>'});h+='</div>';
+h+='<div class="tag-section"><div class="tag-title">Key Themes</div><div class="tags">';r.themes.forEach(function(t){h+='<span class="tag tag-theme">'+t+'</span>'});h+='</div></div><div class="tag-section"><div class="tag-title">Coaching Actions</div><div class="tags">';r.actions.forEach(function(a){h+='<span class="tag tag-action">'+a+'</span>'});h+='</div></div></div>'});return h}
+function renderSkills(){var h='<div class="stitle" style="color:#b83b3b">Critical Gaps (Avg < 2.0)</div><div class="ssub">Urgent coaching needed</div>';
+COMPS.filter(function(c){return c.type==="gap"}).forEach(function(c,i){h+='<div class="comp-card" data-comp="'+i+'"><div class="comp-row"><div style="flex:1"><div class="comp-name">'+c.name+'</div><div class="bar-bg"><div class="bar-fill" style="width:'+((c.avg/5)*100)+'%;background:'+sc(c.avg)+'"></div></div></div><div class="comp-score" style="color:'+sc(c.avg)+'">'+c.avg+'</div></div><div class="comp-detail" id="cg-'+i+'" style="background:#fde8e8;color:#7a2222">'+c.detail+'</div></div>'});
+h+='<div class="stitle" style="color:#0f7b5f;margin-top:32px">Team Strengths (Avg > 3.0)</div><div class="ssub">Leverage for peer coaching</div>';
+COMPS.filter(function(c){return c.type==="strength"}).forEach(function(c,i){h+='<div class="comp-card" data-comp-s="'+i+'"><div class="comp-row"><div style="flex:1"><div class="comp-name">'+c.name+'</div><div class="bar-bg"><div class="bar-fill" style="width:'+((c.avg/5)*100)+'%;background:'+sc(c.avg)+'"></div></div></div><div class="comp-score" style="color:'+sc(c.avg)+'">'+c.avg+'</div></div><div class="comp-detail" id="cs-'+i+'" style="background:#e2f5ec;color:#0f5240">'+c.detail+'</div></div>'});
+h+='<div class="stitle" style="margin-top:32px">Individual Top 3 Gaps</div><div class="gap-grid">';REPS.forEach(function(r){h+='<div class="gap-card"><div class="gap-card-header">'+av(r.n,24)+'<span style="font-weight:600;font-size:13px;color:#1e2b35">'+r.n+'</span></div>';r.gaps.forEach(function(g,i){h+='<div class="gap-item'+(g.includes("Limited")?" limited":"")+'">'+(i+1)+'. '+g+'</div>'});h+='</div>'});h+='</div>';return h}
+function renderTrends(){var h='<div class="stitle">Monthly Team Performance</div><div class="ssub">Feb was best. Mar saw regression. Apr recovering.</div><div class="mo-row">';
+MONTHLY.forEach(function(m){h+='<div class="mo-card" style="text-align:center;padding:18px"><div class="mo-label">'+m.month+'</div><div style="font-size:32px;font-weight:700;color:'+sc(m.avg)+';margin-top:4px">'+m.avg+'</div><div style="display:flex;justify-content:center;gap:16px;margin-top:10px"><div><span style="font-size:16px;font-weight:700;color:#0f7b5f">'+m.strong+'%</span><div style="font-size:9px;color:#8494a2">Strong</div></div><div><span style="font-size:16px;font-weight:700;color:#b83b3b">'+m.weak+'%</span><div style="font-size:9px;color:#8494a2">Weak</div></div></div></div>'});h+='</div>';
+h+='<div class="stitle" style="color:#0f7b5f">Improving</div><div class="ssub">Positive trajectory</div>';REPS.filter(function(r){return r.tl==="Strong ↑"||r.tl==="Improving"}).forEach(function(r){h+='<div class="trend-row">'+av(r.n,30)+'<div style="flex:1"><div style="font-weight:600;font-size:13px;color:#1e2b35">'+r.n+'</div><div style="font-size:11px;color:#0f7b5f">'+r.tl+'</div></div>'+spark(r.trend,120,30)+'<div style="font-size:16px;font-weight:700;color:'+sc(r.avg)+'">'+r.avg+'</div></div>'});
+h+='<div class="stitle" style="color:#b83b3b;margin-top:24px">Watch List</div><div class="ssub">Monitor closely</div>';REPS.filter(function(r){return r.tl==="Recovering"}).forEach(function(r){h+='<div class="trend-row warn">'+av(r.n,30)+'<div style="flex:1"><div style="font-weight:600;font-size:13px;color:#1e2b35">'+r.n+'</div><div style="font-size:11px;color:#b83b3b">'+r.tl+'</div></div>'+spark(r.trend,120,30)+'<div style="font-size:16px;font-weight:700;color:'+sc(r.avg)+'">'+r.avg+'</div></div>'});
+h+='<div class="stitle" style="margin-top:24px">All Reps</div><div class="trend-grid">';REPS.forEach(function(r){h+='<div class="trend-mini">'+av(r.n,24)+'<div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:500;color:#2d3a45;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+r.n+'</div><div style="font-size:10px;color:#8494a2">'+r.tl+'</div></div>'+spark(r.trend,60,20)+'<span style="font-size:12px;font-weight:700;color:'+sc(r.avg)+'">'+r.avg+'</span></div>'});h+='</div>';return h}
+function renderObjections(){var h='<div class="stitle">Objection Handling Effectiveness</div><div class="ssub">Performance across cold calls, AE demos, and SE demos</div>';
+var tiers=[{name:"Elite Handlers",badge:"T1",color:"#fff",bg:"#1a6b54",reps:REPS.filter(function(r){return r.obj.tier==="T1"}).sort(function(a,b){return b.obj.score-a.obj.score})},{name:"Strong Handlers",badge:"T2",color:"#fff",bg:"#8a6d1b",reps:REPS.filter(function(r){return r.obj.tier==="T2"}).sort(function(a,b){return b.obj.score-a.obj.score})},{name:"Development Needed",badge:"T3",color:"#fff",bg:"#b83b3b",reps:REPS.filter(function(r){return r.obj.tier==="T3"}).sort(function(a,b){return b.obj.score-a.obj.score})}];
+tiers.forEach(function(t){h+='<div class="tier-card"><div class="tier-header"><span class="tier-badge" style="background:'+t.bg+'">'+t.badge+'</span><span style="font-weight:600;font-size:14px;color:#1e2b35">'+t.name+' ('+t.reps.length+')</span></div>';
+t.reps.forEach(function(r){h+='<div class="tier-rep">'+av(r.n,30)+'<div style="flex:1"><div style="font-weight:600;font-size:13px;color:#1e2b35">'+r.n+'</div><div class="tier-detail">'+r.obj.type+'</div><div class="tier-detail">'+r.obj.detail+'</div></div><div style="font-size:20px;font-weight:700;color:'+sc(r.obj.score)+'">'+r.obj.score+'</div></div>'});h+='</div>'});
+h+='<div class="rep-card" style="margin-top:16px"><div class="stitle" style="font-size:14px">Key Insights</div><div style="font-size:12px;color:#4a5968;line-height:1.8">• SE team dominates: Ryan Burns (3.87), Denise LaRocca (3.74), Tony Sansone (3.69)<br>• AE strength: Jenna Flory, Candice Chuy, Monica Lopez strong in demo objections<br>• Cold call leaders: Matt McCarthy, Myranda Grabman, Amber Martello<br>• Development priority: Africa Brown needs objection handling coaching</div></div>';return h}
+function renderPricing(){var h='<div class="stitle">Pricing & Negotiation Tracking</div><div class="ssub">Team average: 2.50/5.0 — pricing is a weakness. Only 3 reps above 2.75.</div>';
+var top=REPS.filter(function(r){return r.price.tier==="top"}).sort(function(a,b){return b.price.score-a.price.score});
+var mid=REPS.filter(function(r){return r.price.tier==="mid"}).sort(function(a,b){return b.price.score-a.price.score});
+var crit=REPS.filter(function(r){return r.price.tier==="critical"}).sort(function(a,b){return b.price.score-a.price.score});
+h+='<div class="tier-card"><div class="tier-header"><span class="tier-badge" style="background:#1a6b54">TOP</span><span style="font-weight:600;font-size:14px;color:#1e2b35">Top Performers (≥2.75)</span></div>';
+top.forEach(function(r){h+='<div class="tier-rep">'+av(r.n,30)+'<div style="flex:1"><div style="font-weight:600;font-size:13px;color:#1e2b35">'+r.n+'</div>'+(r.price.mastery?'<div class="tier-detail">Mastery: '+r.price.mastery+' at 4+ · Struggling: '+r.price.struggle+' below 2.0</div>':'')+'</div><div style="font-size:20px;font-weight:700;color:#0f7b5f">'+r.price.score+'</div></div>'});h+='</div>';
+h+='<div class="tier-card"><div class="tier-header"><span class="tier-badge" style="background:#8a6d1b">MID</span><span style="font-weight:600;font-size:14px;color:#1e2b35">Mid-Tier (2.25-2.75)</span></div>';
+mid.forEach(function(r){h+='<div class="tier-rep">'+av(r.n,30)+'<div style="flex:1"><div style="font-weight:600;font-size:13px;color:#1e2b35">'+r.n+'</div></div><div style="font-size:20px;font-weight:700;color:#a07d0a">'+r.price.score+'</div></div>'});h+='</div>';
+h+='<div class="tier-card" style="border-color:#e8a0a0"><div class="tier-header"><span class="tier-badge" style="background:#b83b3b">CRITICAL</span><span style="font-weight:600;font-size:14px;color:#1e2b35">Urgent Development (<2.0)</span></div>';
+crit.forEach(function(r){h+='<div class="tier-rep">'+av(r.n,30)+'<div style="flex:1"><div style="font-weight:600;font-size:13px;color:#1e2b35">'+r.n+'</div>'+(r.price.mastery?'<div class="tier-detail" style="color:#b83b3b">Mastery: '+r.price.mastery+' · Struggling: '+r.price.struggle+'</div>':'')+'</div><div style="font-size:20px;font-weight:700;color:#b83b3b">'+r.price.score+'</div></div>'});h+='</div>';
+h+='<div class="rep-card" style="margin-top:16px"><div class="stitle" style="font-size:14px">Key Insights</div><div style="font-size:12px;color:#4a5968;line-height:1.8">• Only 3 reps above 2.75 — pricing is a team-wide weakness<br>• 39% of Sandra\'s pricing discussions score below 2.0<br>• Lauren Hopkins struggling (0/5 at 4+, 60% below 2.0) — new rep risk<br>• Patrick McCaghren: 100% below 2.0 — CRITICAL immediate training needed</div></div>';return h}
+function renderActivity(){var h='<div class="stitle">Outreach Activity & Efficiency</div><div class="ssub">Volume ≠ Quality. Sweet spot: 400-700 calls with 2.75+ avg.</div>';
+var sorted=[].concat(REPS).filter(function(r){return r.vol.total}).sort(function(a,b){return b.vol.total-a.vol.total});
+h+='<div class="tbl-wrap"><table><thead><tr><th>#</th><th>Rep</th><th style="text-align:right">Calls YTD</th><th style="text-align:right">Avg Score</th><th style="text-align:center">Trend</th><th>Efficiency</th></tr></thead><tbody>';
+sorted.forEach(function(r,i){h+='<tr><td style="color:#8494a2">'+(i+1)+'</td><td><div class="name-cell">'+av(r.n,26)+'<span style="font-weight:600;font-size:13px;color:#1e2b35">'+r.n+'</span></div></td><td style="text-align:right;font-weight:600;color:#2563a8">'+r.vol.total.toLocaleString()+'</td><td style="text-align:right"><span class="badge" style="background:'+scBg(r.avg)+'">'+r.avg+'</span></td><td style="text-align:center">'+spark(r.trend,80,22)+'</td><td style="font-size:11px;color:#4a5968">'+r.vol.eff+'</td></tr>'});
+h+='</tbody></table></div>';
+h+='<div class="rep-card" style="margin-top:20px"><div class="stitle" style="font-size:14px;color:#0f7b5f">Best Efficiency (Quality + Volume)</div><div style="margin-top:12px">';
+[{n:"Lauren Hopkins",a:"2.97",v:"119"},{n:"Myranda Grabman",a:"2.89",v:"726"},{n:"Matt McCarthy",a:"2.84",v:"548"},{n:"Jenna Flory",a:"2.84",v:"505"},{n:"Sky Guasco",a:"2.80",v:"323"}].forEach(function(r){h+='<div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #edf1f5"><div style="flex:1;font-size:13px;font-weight:500;color:#1e2b35">'+r.n+'</div><span class="badge" style="background:#1a6b54">'+r.a+' avg</span><span style="font-size:12px;color:#2563a8;font-weight:600">'+r.v+' calls</span></div>'});
+h+='</div></div>';
+h+='<div class="rep-card"><div class="stitle" style="font-size:14px;color:#b83b3b">Activity Alerts</div><div style="margin-top:12px;font-size:12px;color:#7a2222;line-height:2">• Spencer Hicks: 143→28→0 calls (Mar→Apr). URGENT.<br>• Ryan Burns: Only 4 calls in March, 0 in April. CRITICAL.<br>• Sandra Arnette: 514 calls in March — quality suffered (2.39 avg).<br>• Patrick McCaghren: Strong ramp (242 in Mar) but 2.37 avg quality.</div></div>';return h}
+function render(){renderTabs();var m=document.getElementById("main");if(currentTab==="Overview")m.innerHTML=renderOverview();else if(currentTab==="Call Coaching")m.innerHTML=renderCoaching();else if(currentTab==="Skills & Gaps")m.innerHTML=renderSkills();else if(currentTab==="Trends")m.innerHTML=renderTrends();else if(currentTab==="Objections")m.innerHTML=renderObjections();else if(currentTab==="Pricing")m.innerHTML=renderPricing();else if(currentTab==="Activity")m.innerHTML=renderActivity();bindEvents()}
+function bindEvents(){document.querySelectorAll("th[data-sort]").forEach(function(th){th.onclick=function(){var k=this.dataset.sort;if(sortKey===k)sortDir=sortDir==="desc"?"asc":"desc";else{sortKey=k;sortDir="desc"}render()}});
 document.querySelectorAll("tr[data-rep]").forEach(function(tr){tr.onclick=function(){selRep=parseInt(this.dataset.rep);currentTab="Call Coaching";render()}});
 document.querySelectorAll(".filter-btn").forEach(function(b){b.onclick=function(){selRep=this.dataset.rep==="all"?null:parseInt(this.dataset.rep);render()}});
-document.querySelectorAll(".comp-card[data-comp]").forEach(function(c){c.onclick=function(){var d=document.getElementById("comp-gap-"+this.dataset.comp);if(d)d.classList.toggle("open")}});
-document.querySelectorAll(".comp-card[data-comp-s]").forEach(function(c){c.onclick=function(){var d=document.getElementById("comp-str-"+this.dataset.compS);if(d)d.classList.toggle("open")}})}
+document.querySelectorAll(".comp-card[data-comp]").forEach(function(c){c.onclick=function(){var d=document.getElementById("cg-"+this.dataset.comp);if(d)d.classList.toggle("open")}});
+document.querySelectorAll(".comp-card[data-comp-s]").forEach(function(c){c.onclick=function(){var d=document.getElementById("cs-"+this.dataset.compS);if(d)d.classList.toggle("open")}})}
+document.getElementById("globalSearch").addEventListener("input",function(){
+  var q=this.value.trim().toLowerCase();
+  var sr=document.getElementById("searchResults");
+  var tabs=document.getElementById("tabs");
+  var main=document.getElementById("main");
+  if(q.length<2){sr.style.display="none";tabs.style.display="flex";main.style.display="block";return}
+  var matches=REPS.filter(function(r){return r.n.toLowerCase().indexOf(q)>=0});
+  if(matches.length===0){sr.innerHTML='<div style="text-align:center;padding:40px;color:#8494a2">No reps found matching "'+q+'"</div>';sr.style.display="block";tabs.style.display="none";main.style.display="none";return}
+  var h="";matches.forEach(function(r){h+=renderRepProfile(r)});
+  sr.innerHTML=h;sr.style.display="block";tabs.style.display="none";main.style.display="none";
+});
 render();
 </script>
 </body>
